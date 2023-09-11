@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="javascript.js" defer></script>
+    <title>Library</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <p class="title">Harry Potter and the Sorcerer's Stone</p>
+            <p class="author">by J. K. Rowling</p>
+            <div class="cardFooter">
+                <p>Pages: 309</p>
+                <p>Have Read</p>
+            </div>
+        </div>
+    </div>
+    <dialog class="addDialog">
+        <form>
+            <h2>Add a Book</h2>
+            <div class="formItem">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="formItem">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+
+            <div class="formItem">
+                <label for="pages">Number of Pages:</label>
+                <input type="number" id="pages" name="pages" required>
+            </div>
+
+            <div class="formItem">
+                <p>Did you read this?</p>
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" name="have_read" value="yes">
+                <label for="no">No</label>
+                <input type="radio" id="no" name="have_read" value="no">
+            </div>
+
+            <div>
+                <button value="cancel" formmethod="dialog">Cancel</button>
+                <button class="confirmBtn" value="default">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+    <div class="btnContainer">
+        <button class="addBtn">Add New Book</button>
+    </div>
+</body>
+
+</html>

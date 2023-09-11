@@ -1,1 +1,1 @@
-# library
+This mini-project is a library to help practice with objects in Javascript.

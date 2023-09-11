@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #1d4ed8;
+    padding: 32px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(fit-content, 1fr));
+    margin-bottom: 64px;
+}
+
+.card {
+    display: grid;
+    grid-template-rows: 3rem 1fr 1.5rem;
+    background-color: #fef3c7;
+    border-radius: 8px;
+    width: fit-content;
+    font-size: 1.5rem;
+    height: 200px;
+    padding: 16px;
+    box-shadow: 3px 3px 3px #f5f5f4;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.author {
+    padding-left: 32px;
+}
+
+.cardFooter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addDialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px;
+}
+
+form {
+    display: grid;
+    gap: 16px;
+}
+
+.formItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="text"],
+input[type="number"] {
+    border: none;
+    background-color: #bfdbfe;
+    padding: 8px;
+}
+
+form>div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+form button {
+    padding: 8px;
+}
+
+.btnContainer {
+    text-align: center;
+}
+
+.addBtn {
+    padding: 16px;
+    border: none;
+    border-radius: 32px;
+    cursor: pointer;
+}
