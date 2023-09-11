@@ -16,7 +16,9 @@ body {
 
 .card {
     display: grid;
-    grid-template-rows: 3rem 1fr 1.5rem;
+    grid-template-rows: 3rem 1fr 1.5rem 1.5rem;
+    gap: 8px;
+    align-items: center;
     background-color: #fef3c7;
     border-radius: 8px;
     width: fit-content;
@@ -37,6 +39,10 @@ body {
 .cardFooter {
     display: flex;
     justify-content: space-between;
+}
+
+.card button {
+    padding: 4px;
 }
 
 .addDialog {
