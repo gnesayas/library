@@ -10,6 +10,10 @@ function Book(title, author, numPages, haveRead) {
     };
 }
 
+Book.prototype.toggleRead = function() {
+    this.haveRead = !this.haveRead;
+}
+
 function addBookToLibrary(title, author, numPages, haveRead) {
     const book = new Book(title, author, numPages, haveRead);
     myLibrary.push(book);
@@ -18,7 +22,9 @@ function addBookToLibrary(title, author, numPages, haveRead) {
 function displayBooks() {
     const container = document.querySelector(".container");
     container.replaceChildren();
-    for (const book of myLibrary) {
+    for (let i = 0; i < myLibrary.length; i++) {
+        const book = myLibrary[i];
+
         const card = document.createElement("div");
         card.classList.add("card");
 
@@ -45,10 +51,21 @@ function displayBooks() {
         const cardFooterButtons = document.createElement("div");
         cardFooterButtons.classList.add("cardFooter");
         const removeButton = document.createElement("button");
+        removeButton.dataset.key = i;
         removeButton.textContent = "Remove Book";
+        removeButton.addEventListener("click", (e) => {
+            myLibrary.splice(e.target.dataset.key, 1);
+            displayBooks();
+        })
         cardFooterButtons.appendChild(removeButton);
         const toggleReadButton = document.createElement("button");
+        toggleReadButton.dataset.key = i;
         toggleReadButton.textContent = "Toggle Read";
+        toggleReadButton.addEventListener("click", (e) => {
+            const bookToToggle = myLibrary[e.target.dataset.key];
+            bookToToggle.toggleRead();
+            displayBooks();
+        });
         cardFooterButtons.appendChild(toggleReadButton);
         card.appendChild(cardFooterButtons);
 
@@ -68,33 +85,25 @@ const pagesInput = document.querySelector("#pages");
 const yesRadio = document.querySelector("#yes");
 const noRadio = document.querySelector("#no");
 
-let cancelled = true;
+let confirmed = false;
 
 addBtn.addEventListener("click", () => {
     addDialog.showModal();
 });
 
 cancelBtn.addEventListener("click", () => {
-    cancelled = true;
+    confirmed = false;
     addDialog.close();
 });
 
 confirmBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    cancelled = false;
+    confirmed = true;
     addDialog.close();
 });
 
-addDialog.addEventListener("close", (value) => {
-    if (cancelled) {
-        console.log("Form was cancelled");
-    } else {
-        console.log("Form was submitted");
-        console.log(titleInput.value);
-        console.log(authorInput.value);
-        console.log(pagesInput.value);
-        console.log(yesRadio.checked);
-        console.log(noRadio.checked);
+addDialog.addEventListener("close", () => {
+    if (confirmed) {
         addBookToLibrary(titleInput.value, authorInput.value,
             pagesInput.value, yesRadio.checked ? true : false);
         displayBooks();
