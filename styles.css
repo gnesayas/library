@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -10,26 +11,32 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(fit-content, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 32px;
     margin-bottom: 64px;
 }
 
 .card {
     display: grid;
-    grid-template-rows: 3rem 1fr 1.5rem 1.5rem;
-    gap: 8px;
+    grid-template-rows: 3.5rem 3.5fr 1fr 1fr;
     align-items: center;
     background-color: #fef3c7;
     border-radius: 8px;
-    width: fit-content;
-    font-size: 1.5rem;
-    height: 200px;
+    width: 400px;
+    height: 250px;
     padding: 16px;
+    font-size: 1.5rem;
     box-shadow: 3px 3px 3px #f5f5f4;
 }
 
 .title {
     font-weight: bold;
+}
+
+.title,
+.author {
+    height: 3.5rem;
+    overflow: auto;
 }
 
 .author {

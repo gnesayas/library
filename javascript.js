@@ -16,8 +16,43 @@ function addBookToLibrary(title, author, numPages, haveRead) {
 }
 
 function displayBooks() {
+    const container = document.querySelector(".container");
+    container.replaceChildren();
     for (const book of myLibrary) {
+        const card = document.createElement("div");
+        card.classList.add("card");
 
+        const titleParagraph = document.createElement("p");
+        titleParagraph.classList.add("title");
+        titleParagraph.textContent = book.title;
+        card.appendChild(titleParagraph);
+
+        const authorParagraph = document.createElement("p");
+        authorParagraph.classList.add("author");
+        authorParagraph.textContent = `by ${book.author}`;
+        card.appendChild(authorParagraph);
+
+        const cardFooter = document.createElement("div");
+        cardFooter.classList.add("cardFooter");
+        const pagesParagraph = document.createElement("p");
+        pagesParagraph.textContent = `Pages: ${book.numPages}`;
+        cardFooter.appendChild(pagesParagraph);
+        const haveReadParagraph = document.createElement("p");
+        haveReadParagraph.textContent = book.haveRead ? "Have read" : "Not read yet";
+        cardFooter.appendChild(haveReadParagraph);
+        card.appendChild(cardFooter);
+
+        const cardFooterButtons = document.createElement("div");
+        cardFooterButtons.classList.add("cardFooter");
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove Book";
+        cardFooterButtons.appendChild(removeButton);
+        const toggleReadButton = document.createElement("button");
+        toggleReadButton.textContent = "Toggle Read";
+        cardFooterButtons.appendChild(toggleReadButton);
+        card.appendChild(cardFooterButtons);
+
+        container.appendChild(card);
     }
 }
 
@@ -62,6 +97,7 @@ addDialog.addEventListener("close", (value) => {
         console.log(noRadio.checked);
         addBookToLibrary(titleInput.value, authorInput.value,
             pagesInput.value, yesRadio.checked ? true : false);
+        displayBooks();
     }
     titleInput.value = "";
     authorInput.value = "";
