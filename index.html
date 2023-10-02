@@ -17,17 +17,26 @@
             <h2>Add a Book</h2>
             <div class="formItem">
                 <label for="title">Title:</label>
-                <input type="text" id="title" name="title">
+                <div class="inputdiv">
+                    <input type="text" id="title" name="title" required>
+                    <span id="errortitle" class="error"></span>
+                </div>
             </div>
 
             <div class="formItem">
                 <label for="author">Author:</label>
-                <input type="text" id="author" name="author">
+                <div class="inputdiv">
+                    <input type="text" id="author" name="author" required>
+                    <span id="errorauthor" class="error"></span>
+                </div>
             </div>
 
             <div class="formItem">
                 <label for="pages">Number of Pages:</label>
-                <input type="number" id="pages" name="pages">
+                <div class="inputdiv">
+                    <input type="number" id="pages" name="pages" required min="0">
+                    <span id="errorpages" class="error"></span>
+                </div>
             </div>
 
             <div class="formItem">
